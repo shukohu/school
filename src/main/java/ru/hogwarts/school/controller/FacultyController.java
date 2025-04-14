@@ -23,12 +23,12 @@ public class FacultyController {
 
     @GetMapping("/{id}")
     public Faculty get(@PathVariable Long id) {
-        return facultyService.getFaculty(id);
+        return facultyService.getById(id);
     }
 
-    @PutMapping
-    public Faculty update(@RequestBody Faculty faculty) {
-        return facultyService.updateFaculty(faculty);
+    @PutMapping("/{id}")
+    public Faculty update(@PathVariable Long id,@RequestBody Faculty faculty) {
+        return facultyService.update(id, faculty);
     }
 
     @DeleteMapping("/{id}")
