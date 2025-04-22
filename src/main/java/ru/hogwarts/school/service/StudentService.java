@@ -26,22 +26,26 @@ public class StudentService {
         return repository.findAll();
     }
 
-    public Student update(Long id, Student student) {
-        Optional<Student> optional = repository.findById(id);
-        if (optional.isPresent()) {
-            Student updated = optional.get();
-            updated.setName(student.getName());
-            updated.setAge(student.getAge());
-            return repository.save(updated);
-        }
-        return null;
+    public Student update(Student student) {
+        return repository.save(student);
     }
 
     public void delete(Long id) {
         repository.deleteById(id);
     }
 
-    public List<Student> findByAge(int age) {
-        return repository.findByAge(age);
+    public List<Student> findByAgeBetween(int min, int max) {
+        return repository.findByAgeBetween(min, max);
+    }
+
+    public List<Student> getByNameContains(String letter) {
+        return repository.findByNameContainingIgnoreCase(letter);
+    }
+    public List<Student> getByAgeLessThanId() {
+        return repository.findByAgeLessThan(100);
+    }
+
+    public List<Student> sortByAge() {
+        return repository.findAllByOrderOfAge();
     }
 }

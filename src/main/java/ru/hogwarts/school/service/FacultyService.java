@@ -23,15 +23,9 @@ public class FacultyService {
         return repository.findById(id).orElse(null);
     }
 
-    public Faculty update(Long id, Faculty faculty) {
-        Optional<Faculty> optional = repository.findById(id);
-        if (optional.isPresent()) {
-            Faculty updated = optional.get();
-            updated.setName(faculty.getName());
-            updated.setColor(faculty.getColor());
-            return repository.save(updated);
-        }
-        return null;
+    public Faculty update(Faculty faculty) {
+        return repository.save(faculty);
+
     }
 
     public void deleteFaculty(Long id) {
@@ -43,7 +37,7 @@ public class FacultyService {
         return repository.findAll();
     }
 
-    public List<Faculty> findByColor(String color) {
-        return repository.findByColor(color);
+    public List<Faculty> findByNameOrColor(String filter) {
+        return repository.findByNameIgnoreCaseOrColor(filter, filter);
     }
 }
