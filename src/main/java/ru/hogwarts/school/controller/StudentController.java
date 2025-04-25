@@ -56,4 +56,10 @@ public class StudentController {
     public List<Student> sortByAge() {
         return studentService.sortByAge();
     }
+
+    @GetMapping("/{id}/faculty")
+    public Faculty getFacultyOfStudent(@PathVariable Long id) {
+        Student student = studentService.getById(id);
+        return student != null ? student.getFaculty() : null;
+    }
 }
