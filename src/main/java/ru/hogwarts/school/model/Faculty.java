@@ -16,7 +16,5 @@ public class Faculty {
     @OneToMany(mappedBy = "faculty", fetch = FetchType.LAZY)
     private List<Student> students;
 
-    public List<Student> getStudents() {
-        return students;
-    }
+
 }
