@@ -19,4 +19,20 @@ public class Faculty {
     public List<Student> getStudents() {
         return students;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Object getId() {
+        return id;
+    }
 }
