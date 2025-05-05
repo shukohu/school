@@ -25,7 +25,7 @@ public class StudentService {
         return repository.findAll();
     }
 
-    public Student update(Student student) {
+    public Student update(long l, Student student) {
         return repository.save(student);
     }
 

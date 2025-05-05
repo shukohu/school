@@ -22,7 +22,7 @@ public class FacultyService {
         return repository.findById(id).orElse(null);
     }
 
-    public Faculty update(Faculty faculty) {
+    public Faculty update(long l, Faculty faculty) {
         return repository.save(faculty);
 
     }

@@ -29,7 +29,7 @@ public class FacultyController {
 
     @PutMapping
     public Faculty update(@RequestBody Faculty faculty) {
-        return facultyService.update(faculty);
+        return facultyService.update(1L, faculty);
     }
 
     @DeleteMapping("/{id}")
