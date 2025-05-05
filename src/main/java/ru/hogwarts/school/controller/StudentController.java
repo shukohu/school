@@ -29,7 +29,7 @@ public class StudentController {
 
     @PutMapping
     public Student update(@RequestBody Student student) {
-        return studentService.update(student);
+        return studentService.update(1L, student);
     }
 
     @DeleteMapping("/{id}")
@@ -55,5 +55,11 @@ public class StudentController {
     @GetMapping("/sort_by_age")
     public List<Student> sortByAge() {
         return studentService.sortByAge();
+    }
+
+    @GetMapping("/{id}/faculty")
+    public Faculty getFacultyOfStudent(@PathVariable Long id) {
+        Student student = studentService.getById(id);
+        return student != null ? student.getFaculty() : null;
     }
 }

@@ -3,7 +3,6 @@ package ru.hogwarts.school.service;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repository.StudentRepository;
-
 import java.util.*;
 
 @Service
@@ -26,7 +25,7 @@ public class StudentService {
         return repository.findAll();
     }
 
-    public Student update(Student student) {
+    public Student update(long l, Student student) {
         return repository.save(student);
     }
 
