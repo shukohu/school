@@ -3,7 +3,6 @@ package ru.hogwarts.school.service;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.repository.FacultyRepository;
-
 import java.util.*;
 
 @Service
@@ -23,7 +22,7 @@ public class FacultyService {
         return repository.findById(id).orElse(null);
     }
 
-    public Faculty update(Faculty faculty) {
+    public Faculty update(long l, Faculty faculty) {
         return repository.save(faculty);
 
     }
