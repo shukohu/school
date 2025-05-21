@@ -44,21 +44,34 @@ public class StudentController {
     public List<Student> getByNameContains(@RequestParam String letter) {
         return studentService.getByNameContains(letter);
     }
+
     @GetMapping("/age_less_than_id")
     public List<Student> getByAgeLessThanId() {
         return studentService.getByAgeLessThanId();
     }
+
     @GetMapping("/sort_by_age")
     public List<Student> sortByAge() {
         return studentService.sortByAge();
     }
+
     @GetMapping("/count")
     public int countStudents() {
         return studentService.getStudentCount();
     }
+
     @GetMapping("/averageAge")
-    public double averageAge() {
+    public double getAverageAge() {
         return studentService.getAverageAge();
     }
 
+    @GetMapping("/names_start_with_a")
+    public List<String> getNameStartWithA() {
+        return studentService.getNameStartWithA();
+    }
+
+    @GetMapping
+    public long getFastSum() {
+        return studentService.calculateSum();
+    }
 }

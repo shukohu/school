@@ -20,5 +20,6 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     @Query("Select Average Age From Student")
     double getAverageAgeStudents();
+
 }
 

@@ -51,9 +51,15 @@ public class FacultyController {
     public List<Faculty> FindByNameOrColor(@RequestParam String letter) {
         return facultyService.findByNameOrColor(letter);
     }
+
     @GetMapping("/{id}/students")
     public List<Student> getStudentsByFaculty(@PathVariable Long id) {
         Faculty faculty = facultyService.getById(id);
         return faculty != null ? faculty.getStudents() : null;
+    }
+
+    @GetMapping("/longest_name")
+    public String getLongestFacultyName() {
+        return facultyService.getLongestFacultyName();
     }
 }

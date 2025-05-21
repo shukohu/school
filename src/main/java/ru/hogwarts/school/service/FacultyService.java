@@ -52,4 +52,8 @@ public class FacultyService {
         logger.info("Was invoked method to find faculty by name or color = {}", filter);
         return repository.findByNameIgnoreCaseOrColor(filter, filter);
     }
+
+    public String getLongestFacultyName() {
+        return repository.findAll().stream().map(Faculty::getName).filter(Objects::nonNull).max(Comparator.comparing(String::length)).orElse("Нет факультетов");
+    }
 }
