@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
 @EntityScan(basePackages = "ru.hogwarts.school.model")
+
 public class SchoolApplication {
 
 	public static void main(String[] args) {
