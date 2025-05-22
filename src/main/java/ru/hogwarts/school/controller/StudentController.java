@@ -74,4 +74,44 @@ public class StudentController {
     public long getFastSum() {
         return studentService.calculateSum();
     }
+
+    @GetMapping("/print_parallel")
+    public void printStudentsInParallel() {
+        List<Student> students = studentService.getAllStudents();
+
+        System.out.println(students.get(0).getName());
+        System.out.println(students.get(1).getName());
+
+        new Thread(() -> {
+            System.out.println(students.get(2).getName());
+            System.out.println(students.get(3).getName());
+        }).start();
+
+        new Thread(() -> {
+            System.out.println(students.get(4).getName());
+            System.out.println(students.get(5).getName());
+        }).start();
+    }
+
+    @GetMapping("/print_synchronized")
+    public void printStudentsSynchronized() {
+        List<Student> students = studentService.getAllStudents();
+
+        System.out.println(students.get(0).getName());
+        System.out.println(students.get(1).getName());
+
+        new Thread(() -> {
+            System.out.println(students.get(2).getName());
+            System.out.println(students.get(3).getName());
+        }).start();
+
+        new Thread(() -> {
+            System.out.println(students.get(4).getName());
+            System.out.println(students.get(5).getName());
+        }).start();
+    }
+
+    private synchronized void printStudentNameSynchronized(String name) {
+        System.out.println(name);
+    }
 }
