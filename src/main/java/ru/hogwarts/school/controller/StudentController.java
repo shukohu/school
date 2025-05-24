@@ -76,42 +76,12 @@ public class StudentController {
     }
 
     @GetMapping("/print_parallel")
-    public void printStudentsInParallel() {
-        List<Student> students = studentService.getAllStudents();
-
-        System.out.println(students.get(0).getName());
-        System.out.println(students.get(1).getName());
-
-        new Thread(() -> {
-            System.out.println(students.get(2).getName());
-            System.out.println(students.get(3).getName());
-        }).start();
-
-        new Thread(() -> {
-            System.out.println(students.get(4).getName());
-            System.out.println(students.get(5).getName());
-        }).start();
+    public void printNamesInParallel() {
+       studentService.printNamesInParallel();
     }
 
     @GetMapping("/print_synchronized")
-    public void printStudentsSynchronized() {
-        List<Student> students = studentService.getAllStudents();
-
-        System.out.println(students.get(0).getName());
-        System.out.println(students.get(1).getName());
-
-        new Thread(() -> {
-            System.out.println(students.get(2).getName());
-            System.out.println(students.get(3).getName());
-        }).start();
-
-        new Thread(() -> {
-            System.out.println(students.get(4).getName());
-            System.out.println(students.get(5).getName());
-        }).start();
-    }
-
-    private synchronized void printStudentNameSynchronized(String name) {
-        System.out.println(name);
+    public void printSynchronized() {
+        studentService.printStudentNamesSynchronized();
     }
 }

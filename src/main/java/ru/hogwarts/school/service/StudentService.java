@@ -70,4 +70,41 @@ public class StudentService {
     public long calculateSum() {
         return LongStream.rangeClosed(1, 1_000_000).parallel().sum();
     }
+
+    public void printNamesInParallel() {
+        List<Student> students = getAllStudents();
+
+        System.out.println(students.get(0).getName());
+        System.out.println(students.get(1).getName());
+
+        new Thread(()->{
+            System.out.println(students.get(2).getName());
+            System.out.println(students.get(3).getName());
+        });
+        new Thread(()->{
+            System.out.println(students.get(4).getName());
+            System.out.println(students.get(5).getName());
+        });
+    }
+
+    private synchronized void printSynchronized(String name) {
+        System.out.println(name);
+    }
+
+    public void printStudentNamesSynchronized() {
+        List<Student> students = getAllStudents();
+
+        printSynchronized(students.get(0).getName());
+        printSynchronized(students.get(1).getName());
+
+        new Thread(()->{
+            printSynchronized(students.get(2).getName());
+            printSynchronized(students.get(3).getName());
+        });
+
+        new Thread(()->{
+            printSynchronized(students.get(4).getName());
+            printSynchronized(students.get(5).getName());
+        });
+    }
 }
