@@ -1,7 +1,6 @@
 package ru.hogwarts.school.controller;
 
 import org.springframework.web.bind.annotation.*;
-import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.service.StudentService;
 
@@ -10,7 +9,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/student")
 public class StudentController {
-
     private final StudentService studentService;
 
     public StudentController(StudentService studentService) {
@@ -29,7 +27,7 @@ public class StudentController {
 
     @PutMapping
     public Student update(@RequestBody Student student) {
-        return studentService.update(student);
+        return studentService.update(999L, student);
     }
 
     @DeleteMapping("/{id}")
@@ -55,5 +53,35 @@ public class StudentController {
     @GetMapping("/sort_by_age")
     public List<Student> sortByAge() {
         return studentService.sortByAge();
+    }
+
+    @GetMapping("/count")
+    public int countStudents() {
+        return studentService.getStudentCount();
+    }
+
+    @GetMapping("/averageAge")
+    public double getAverageAge() {
+        return studentService.getAverageAge();
+    }
+
+    @GetMapping("/names_start_with_a")
+    public List<String> getNameStartWithA() {
+        return studentService.getNameStartWithA();
+    }
+
+    @GetMapping
+    public long getFastSum() {
+        return studentService.calculateSum();
+    }
+
+    @GetMapping("/print_parallel")
+    public void printNamesInParallel() {
+       studentService.printNamesInParallel();
+    }
+
+    @GetMapping("/print_synchronized")
+    public void printSynchronized() {
+        studentService.printStudentNamesSynchronized();
     }
 }
